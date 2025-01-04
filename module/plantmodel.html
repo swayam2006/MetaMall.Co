@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Model Viewer</title>
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        model-viewer {
+            width: 100%;
+            max-width: 600px;
+            height: 500px;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #83B735;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            display: none;
+            z-index: 1000;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 3D Model Viewer -->
+    <model-viewer id="modelViewer"
+        src="https://raw.githubusercontent.com/swayam2006/plant-decor/main/tree_s2.glb"
+        alt="A 3D model of a basket swing chair in AR"
+        ar
+        ar-modes="scene-viewer quick-look webxr"
+        environment-image="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr"
+        auto-rotate
+        camera-controls>
+    </model-viewer>
+
+    <!-- Button for AR functionality -->
+    <button id="arButton" onclick="toggleAR()">Toggle AR Mode</button>
+
+    <p>
+        Tap the button or the AR icon in the viewer to activate AR on mobile. For PC, enjoy the 3D model preview.
+    </p>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="message-container">AR Mode Activated!</div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const arButton = document.getElementById('arButton');
+
+            if (!isMobile) {
+                // Hide AR button if on PC
+                arButton.style.display = "none";
+                console.log("AR mode is disabled on non-mobile devices.");
+            }
+        });
+
+        function toggleAR() {
+            const modelViewer = document.getElementById('modelViewer');
+            if (modelViewer) {
+                modelViewer.activateAR();
+                displaySuccessMessage("AR Mode Activated!");
+            } else {
+                alert("AR mode is only supported on mobile devices with AR capability.");
+            }
+        }
+
+        function displaySuccessMessage(message) {
+            const messageContainer = document.getElementById("successMessage");
+            messageContainer.textContent = message;
+            messageContainer.style.display = "block";
+
+            // Hide the message after 3 seconds
+            setTimeout(() => {
+                messageContainer.style.display = "none";
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
+

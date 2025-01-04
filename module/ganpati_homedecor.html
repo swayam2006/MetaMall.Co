@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Decor Website</title>
+        <!-- Link to CSS -->
+        <link rel="stylesheet" href="/style/style.css">
+        <!-- Box Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+        <style>
+            /* Styling for the success message */
+            .message-container {
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #83B735;
+                color: #fff;
+                padding: 15px 20px;
+                border-radius: 5px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+                display: none;
+                z-index: 1000;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <header> 
+            <a href="#" class="logo">MetaMall <span>X.</span></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+
+            <ul class="navbar">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/module/cart.html">Cart</a></li>
+            </ul>
+        </header>
+
+        <!-- Product Details -->
+        <section id="productdetails" class="section-p1">
+            <div class="single-pro-image">
+                <img src="/assest/Ganpati_Homedecor.png" width="100%" id="MainImg" alt="Ganpati Home Decor">
+            </div>
+            <div class="single-pro-details">
+                <h6>Home / Home Decor</h6>
+                <h4>Ganpati Home Decor</h4>
+                <h2>₹600</h2>
+                <input type="number" id="quantity" value="1" min="1">
+                <button class="btn" onclick="addToCart()">Add to Cart</button>
+                <a href="/module/ganpati_homedecor_model.html"><button class="btn">AR Try On</button></a>
+                <h4>Product Details</h4>
+                <span>Infuse your space with spiritual charm and serenity with this compact brass Ganesha statue. Featuring a meditative pose and intricate detailing, this small yet elegant piece fits perfectly in cozy spaces. Its antique finish adds a timeless touch, making it a meaningful décor or gift item.  <br></span>
+                <span> <br><B>Key Features</B> <br></span>
+                <span>Material: Premium brass with a stunning antique finish. <br>
+                      Design : Lord Ganesha in a serene seated posture, symbolizing wisdom and prosperity. <br> 
+                      Compact Size : Perfect for desks, shelves, or small altars. <br>  
+                      Dimensions : Height: 3 inches; Width: 2 inches; Depth: 2 inches. <br>
+                      Versatile Use : Ideal for personal spaces, work desks, or as a travel-friendly spiritual token. <br></span>
+            </div> 
+        </section>
+
+        <!-- About -->
+        <section class="about" id="about">
+            <div class="about-img">
+                <img src="/assest/about.jpg" alt="About Us">
+            </div>
+            <div class="about-text">
+                <span>About Us</span>
+                <h2>View the Product of your choice in <br> AR Mode </h2>
+                <p>Our website helps you view the product in AR using your mobile phone's camera.</p>
+                <p>Making it easy to choose the product that actually suits your lifestyle.</p>
+                <a href="#shop" class="btn">Learn More.</a>
+            </div>
+        </section>
+
+        <section class="newsletter" id="contact">
+            <h2>Subscribe to Newsletter</h2>
+            <div class="news-box">
+                <input type="text" placeholder="Enter Your Email...">
+                <a href="#" class="btn">Subscribe</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section class="footer" id="footer">
+            <div class="footer-box">
+                <h2>MetaMall <span>X.</span></h2>
+                <p>AR try-on</p>
+                <div class="social">
+                    <a href="https://www.facebook.com/metamall.co?mibextid=ZbWKwL"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://www.instagram.com/metamall.co?igsh=MWV5aTk4b2VlMG0xag=="><i class='bx bxl-instagram'></i></a>
+                </div>
+            </div>
+            <div class="footer-box">
+                <h3>Services</h3>
+                <li><a href="#shop">Product</a></li>
+                <li><a href="#">Help & Support</a></li>
+                <li><a href="#">Pricing</a></li>
+                <li><a href="#">FAQ</a></li>
+            </div>
+            <div class="footer-box">
+                <h3>Product</h3>
+                <li><a href="/module/swingchair.html">Sofas</a></li>
+                <li><a href="/module/table.html">Chairs</a></li>
+                <li><a href="/module/toytrain.html">Home decor</a></li>
+            </div>
+            <div class="footer-box contact-info">
+                <h3>Contact</h3>
+                <span>Pune City, Maharashtra, India</span>
+                <span>+91 7385323992</span>
+                <span>metamall.co@gmail.com</span>
+            </div>
+        </section>
+        <div class="copyright">
+            <p>&#169; MetaMall All Right Reserved.</p>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="message-container">Product added to cart!</div>
+
+        <!-- JavaScript -->
+        <script>
+            function addToCart() {
+                const product = {
+                    name: "Ganpati Home Decor",
+                    price: 600,
+                    quantity: parseInt(document.getElementById("quantity").value)
+                };
+
+                // Retrieve cart from localStorage or initialize as empty
+                let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                cart.push(product);
+
+                // Save the updated cart to localStorage
+                localStorage.setItem("cart", JSON.stringify(cart));
+
+                // Display confirmation message
+                const message = document.getElementById("successMessage");
+                message.style.display = "block";
+
+                // Hide the message after 3 seconds
+                setTimeout(() => {
+                    message.style.display = "none";
+                }, 3000);
+            }
+        </script>
+    </body>
+</html>

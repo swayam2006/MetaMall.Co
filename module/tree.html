@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Decor Website</title>
+    <!-- Link to CSS -->
+    <link rel="stylesheet" href="/style/style.css">
+    <!-- Box Icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <header> 
+        <a href="#" class="logo">MetaMall <span>X.</span></a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+
+        <ul class="navbar">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="/module/cart.html">Cart</a></li>
+        </ul>
+    </header>
+
+    <!-- Product Details -->
+    <section id="productdetails" class="section-p1">
+        <div class="single-pro-image">
+            <img src="/assest/tree.png" width="100%" id="MainImg" alt="Product Image">
+        </div>
+
+        <div class="single-pro-details">
+            <h6>Home / Decor</h6>
+            <h4>Modern Grey Planter</h4>
+            <h2>₹400</h2>
+            <input type="number" value="1">
+            <button class="btn">Add to Cart</button>
+            <a href="/module/plantmodel.html"><button class="btn" id="arButton">AR Try On</button></a>
+            <h4>Product Details</h4>
+            <span>Elevate your interior décor with the Compact Modern Gray Planter, a sleek and stylish accent designed to bring the beauty of nature to smaller spaces. Its contemporary, tapered design and neutral gray finish make it a versatile addition to any room, blending seamlessly with minimalist or modern aesthetics.  <br></span>
+            <span> <B> <br>Key Features <br></B> </span>
+            <span>Sophisticated Design: Tapered rectangular planter in a neutral gray matte finish for a clean, modern look. <br>
+                  Realistic Foliage: High-quality artificial leaves with vibrant green tones and natural detailing. <br>  
+                  Compact Size: Ideal for smaller spaces like desks, countertops, or shelves. <br>  
+                  Durable and Long-Lasting: Sturdy construction ensures years of use without fading or wear. <br>\ 
+                  Low Maintenance: No watering, sunlight, or pruning needed—just a quick wipe to keep it looking fresh. <br>  
+                </span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <img src="/assest/about.jpg" alt="About Us Image">
+        </div>
+        <div class="about-text">
+            <span>About Us</span>
+            <h2>View the Product of your choice in <br> AR Mode </h2>
+            <p>Our website helps you view the product in AR using your mobile phone's camera</p>
+            <p>Making it easy to choose the product that actually suits your lifestyle</p>
+            <a href="#shop" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="contact">
+        <h2>Subscribe to Newsletter</h2>
+        <div class="news-box">
+            <input type="text" placeholder="Enter Your Email...">
+            <a href="#" class="btn">Subscribe</a>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer" id="footer">
+        <div class="footer-box">
+            <h2>MetaMall <span>X.</span></h2>
+            <p>AR Try On</p>
+            <div class="social">
+                <a href="https://www.facebook.com/metamall.co?mibextid=ZbWKwL"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="https://www.instagram.com/metamall.co?igsh=MWV5aTk4b2VlMG0xag=="><i class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+        <div class="footer-box">
+            <h3>Services</h3>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Help & Support</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">FAQ</a></li>
+        </div>
+        <div class="footer-box">
+            <h3>Product</h3>
+            <li><a href="/moduel/swingchair.html">Sofas</a></li>
+            <li><a href="/module/table.html">Chairs</a></li>
+            <li><a href="/module/toytrain.html">Home Decor</a></li>
+        </div>
+        <div class="footer-box contact-info">
+            <h3>Contact</h3>
+            <span>Pune City, Maharashtra, India</span>
+            <span>+91 7385323992</span>
+            <span>metamall.co@gmail.com</span>
+        </div>
+    </section>
+
+    <div class="copyright">
+        <p>&#169; MetaMall All Rights Reserved.</p>
+    </div>
+
+    <!-- Link to JS -->
+    <script src="main.js"></script>
+
+    <!-- Success Message -->
+    <div id="successMessage" class="message-container">AR Mode Activated!</div>
+
+    <!-- Success Message Styling -->
+    <style>
+        .message-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #83B735;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+    <script>
+        // Display AR message when AR is activated
+        document.getElementById('arButton').addEventListener('click', () => {
+            const messageContainer = document.getElementById('successMessage');
+            messageContainer.style.display = 'block';
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                messageContainer.style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+
+</html>
